@@ -24,8 +24,7 @@ RUN apk add --no-cache \
         zip
 
 RUN addgroup -g 1000 builder && \
-    adduser -u 1000 -h /builder -D -G builder -s /bin/bash builder && \
-    mkdir -p /dist && chown -R builder:builder /dist
+    adduser -u 1000 -h /dist -D -G builder -s /bin/bash builder
 
 USER builder
 

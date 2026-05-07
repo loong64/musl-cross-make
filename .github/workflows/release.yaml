@@ -54,12 +54,21 @@ jobs:
           path: dist
           merge-multiple: true
 
+      - name: Generate notes
+        run: |
+          cat <<EOF > release_notes.md
+          ### Build Configuration
+          \`\`\`makefile
+          $(cat config.mak)
+          \`\`\`
+          EOF
+
       - name: Create release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           TAG_NAME="$(date +%Y%m%d)"
           gh release create "${TAG_NAME}" \
-            --generate-notes \
+            --notes-file release_notes.md \
             --title "${TAG_NAME}" \
             dist/*
