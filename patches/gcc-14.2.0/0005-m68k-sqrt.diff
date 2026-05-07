@@ -1,5 +1,5 @@
 diff --git a/gcc/config/m68k/m68k.md b/gcc/config/m68k/m68k.md
-index e4208cf323f..c5df8226fa8 100644
+index 59a456cd496..dbfddea41bd 100644
 --- a/gcc/config/m68k/m68k.md
 +++ b/gcc/config/m68k/m68k.md
 @@ -4174,13 +4174,13 @@
