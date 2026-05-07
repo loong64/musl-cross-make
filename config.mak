@@ -1,0 +1,20 @@
+STAT = -static --static
+FLAG = -g0 -O2 -fno-align-functions -fno-align-jumps -fno-align-loops -fno-align-labels -Wno-error
+
+ifneq ($(NATIVE),)
+COMMON_CONFIG += CC="$(HOST)-gcc ${STAT}" CXX="$(HOST)-g++ ${STAT}" FC="$(HOST)-gfortran ${STAT}"
+else
+COMMON_CONFIG += CC="gcc ${STAT}" CXX="g++ ${STAT}" FC="gfortran ${STAT}"
+endif
+
+COMMON_CONFIG += CFLAGS="${FLAG}" CXXFLAGS="${FLAG}" FFLAGS="${FLAG}" LDFLAGS="-s ${STAT}"
+
+GCC_CONFIG += --enable-default-pie --enable-static-pie --disable-cet
+
+CONFIG_SUB_REV = a2287c3041a3
+GCC_VER = 14.2.0
+BINUTILS_VER = 2.44
+MUSL_VER = 1.2.5
+GMP_VER = 6.3.0
+MPC_VER = 1.3.1
+MPFR_VER = 4.2.2
